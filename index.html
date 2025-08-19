@@ -38,15 +38,17 @@
         }
         #datetime {
             margin-left: 10px;
+            display: inline-block;
         }
-        @media (max-width: 768px) {
-            #datetime {
-                margin-left: 10px; /* Increased for better balance on mobile */
-            }
+        #nav {
+            margin-top: 7px;
+            display: inline-block;
+            vertical-align: top;
         }
         #nav a {
             color: black;
             text-decoration: none;
+            margin-left: 10px;
         }
         #nav a:hover {
             color: #808080;
@@ -55,11 +57,19 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
+        @media (max-width: 768px) {
+            #datetime {
+                margin-left: 10px;
+            }
+            #nav a {
+                margin-left: 5px;
+            }
+        }
     </style>
 </head>
 <body>
     <div id="datetime"></div>
-    <div id="nav" style="margin-top: 7px;">
+    <div id="nav">
         <a href="/">HOME</a> | <a href="/domains">DOMAINS</a> | <a href="/activity">ACTIVITY</a>
     </div>
     <div style="display: none;">
