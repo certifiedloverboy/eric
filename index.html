@@ -24,6 +24,7 @@
             margin: 0;
             padding: 10px;
             animation: fadeIn 1s ease-in-out;
+            text-transform: uppercase;
         }
         @media (prefers-color-scheme: light) {
             body {
@@ -33,6 +34,15 @@
         @media (prefers-color-scheme: dark) {
             body {
                 background-color: #CDCDCD;
+            }
+        }
+        #datetime {
+            animation: retroGlitch 0.3s infinite alternate;
+            margin-left: 10px;
+        }
+        @media (max-width: 768px) {
+            #datetime {
+                margin-left: 7px;
             }
         }
         #nav a {
@@ -54,15 +64,12 @@
             80% { transform: translate(1px, -1px); }
             100% { transform: translate(0); }
         }
-        #datetime {
-            animation: retroGlitch 0.3s infinite alternate;
-        }
     </style>
 </head>
 <body>
     <div id="datetime"></div>
     <div id="nav" style="margin-top: 7px;">
-        <a href="/">home</a> | <a href="/domains">domains</a> | <a href="/activity">activity</a>
+        <a href="/">HOME</a> | <a href="/domains">DOMAINS</a> | <a href="/activity">ACTIVITY</a>
     </div>
     <div style="display: none;">
         <a href="https://www.instagram.com/ereyec">ereyec instagram</a>
@@ -80,7 +87,7 @@
             const seconds = String(now.getSeconds()).padStart(2, '0');
             const dateStr = `${month} ${day} ${year}`;
             const timeStr = `${hours}:${minutes}:${seconds}`;
-            document.getElementById('datetime').textContent = dateStr + '     ' + timeStr;
+            document.getElementById('datetime').textContent = dateStr + '         ' + timeStr;
         }
         setInterval(updateTime, 1000);
         updateTime();
