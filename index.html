@@ -24,49 +24,31 @@
             color: black;
             margin: 0;
             padding: 10px;
-            animation: fadeIn 1s ease-in-out;
             text-transform: uppercase;
             text-align: left;
+            animation: fadeIn 1s ease-in-out;
+            transition: opacity 1s ease-in-out;
         }
         @media (prefers-color-scheme: light) {
-            body {
-                background-color: #F1F1F1;
-            }
+            body { background-color: #F1F1F1; }
         }
         @media (prefers-color-scheme: dark) {
-            body {
-                background-color: #CDCDCD;
-            }
+            body { background-color: #CDCDCD; }
         }
-        #datetime {
-            margin-left: 10px;
-            white-space: nowrap;
+        ::selection {
+            background: #D3D3D3; /* bright gray highlight */
+            color: black;
         }
+        #datetime { margin-left: 10px; white-space: nowrap; }
         #nav {
             margin-top: 7px;
             margin-left: 10px;
             font-family: 'IBM Plex Mono', monospace;
             white-space: nowrap;
         }
-        #nav a {
-            color: black;
-            text-decoration: none;
-        }
-        #nav a:hover {
-            color: #808080;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @media (max-width: 768px) {
-            #datetime {
-                margin-left: 10px;
-            }
-            #nav {
-                margin-left: 10px;
-            }
-        }
+        #nav a { color: black; text-decoration: none; }
+        #nav a:hover { color: #808080; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
@@ -80,6 +62,7 @@
         <a href="https://soundcloud.com/ereyec">ereyec soundcloud</a>
     </div>
     <script>
+        // Clock
         function updateTime() {
             const now = new Date();
             const month = String(now.getMonth() + 1).padStart(2, '0');
@@ -94,6 +77,17 @@
         }
         setInterval(updateTime, 1000);
         updateTime();
+
+        // Fade out on link clicks
+        document.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", function(e) {
+                e.preventDefault();
+                document.body.style.opacity = "0";
+                setTimeout(() => {
+                    window.location.href = this.href;
+                }, 1000);
+            });
+        });
     </script>
 </body>
 </html>
