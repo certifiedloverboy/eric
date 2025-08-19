@@ -37,12 +37,11 @@
             }
         }
         #datetime {
-            animation: retroGlitch 0.3s infinite alternate;
             margin-left: 10px;
         }
         @media (max-width: 768px) {
             #datetime {
-                margin-left: 7px;
+                margin-left: 10px; /* Increased for better balance on mobile */
             }
         }
         #nav a {
@@ -55,14 +54,6 @@
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
-        }
-        @keyframes retroGlitch {
-            0% { transform: translate(0); }
-            20% { transform: translate(-1px, 1px); }
-            40% { transform: translate(1px, -1px); }
-            60% { transform: translate(-1px, 1px); }
-            80% { transform: translate(1px, -1px); }
-            100% { transform: translate(0); }
         }
     </style>
 </head>
